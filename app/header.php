@@ -10,13 +10,13 @@
 <body>
         <nav class="navbar navbar-expand-lg bg-light border border-2 bg-primary-subtle fixed-top">
             <div class="container">
-                <a class="navbar-brand nav-container" href="#"> Seat Allocation System</a>
+                <a class="navbar-brand nav-container" href="../../../Seat-Allocation-System/index.php"> Seat Allocation System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class=" container collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="../../../Seat-Allocation-System/index.php">Home</a>

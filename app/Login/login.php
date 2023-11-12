@@ -2,7 +2,7 @@
 include("../header.php");
 ?>
 
-<section class="vh-100 bg-secondary">
+<section class="vh-100 bg-info">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -21,10 +21,10 @@ include("../header.php");
               <label class="form-label" for="typePasswordX-2">Password</label>
             </div>
             <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
