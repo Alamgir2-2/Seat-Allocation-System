@@ -2,9 +2,6 @@
 include("../header.php");
 ?>
 
-<?php
-include("../header.php");
-?>
 
 <section class="vh-100 bg-info">
     <div class="container py-5 h-100">

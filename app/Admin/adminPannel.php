@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("Location: ../Login/login.php");
+    exit();
+}
 include("./adminHeader.php");
 ?>
 <!DOCTYPE html>
@@ -28,12 +33,12 @@ include("./adminHeader.php");
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('orders')">
+                            <a class="nav-link" href="#" onclick="loadContent('orders','./orders.php')">
                                 <i class="fas fa-shopping-cart"></i> Orders
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('products')">
+                            <a class="nav-link" href="#" onclick="loadContent('products','./products.php')">
                                 <i class="fas fa-box"></i> Products
                             </a>
                         </li>
@@ -73,4 +78,3 @@ include("./adminHeader.php");
 </body>
 
 </html>
-
