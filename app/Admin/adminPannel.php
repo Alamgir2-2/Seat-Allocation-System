@@ -34,17 +34,23 @@ include("./adminHeader.php");
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('orders','./orders.php')">
-                                <i class="fas fa-shopping-cart"></i> Orders
+                                <i class="fas fa-shopping-cart"></i> Students
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="loadContent('hall', './hall.php')">
+                                <i class="fas fa-users"></i> Halls
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('products','./products.php')">
-                                <i class="fas fa-box"></i> Products
+                                <i class="fas fa-box"></i> Blocks
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('hall', './hall.php')">
-                                <i class="fas fa-users"></i> Halls
+                            <a class="nav-link" href="#" onclick="loadContent('products','./products.php')">
+                                <i class="fas fa-box"></i> Rooms
                             </a>
                         </li>
                     </ul>
