@@ -59,7 +59,7 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('products','./products.php')">
+                            <a class="nav-link" href="#" onclick="loadContent('room','./room.php')">
                                 <i class="fas fa-box"></i> Rooms
                             </a>
                         </li>

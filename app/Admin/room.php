@@ -39,11 +39,10 @@
                             <thead>
                                 <tr>
                                     <!-- <th scope="col" class="text-nowrap">Id</th> -->
-                                    <th scope="col" class="text-nowrap">Hall Id</th>
-                                    <th scope="col" class="text-nowrap">Hall Name</th>
-                                    <th scope="col" class="text-nowrap">Total Seat</th>
-                                    <th scope="col" class="text-nowrap">Avilable Seat</th>
-                                    <th scope="col" class="text-nowrap">Number of Student</th>
+                                    <th scope="col" class="text-nowrap">Room Number</th>
+                                    <th scope="col" class="text-nowrap">Number of Table</th>
+                                    <th scope="col" class="text-nowrap">Number of Bed</th>
+                                    <th scope="col" class="text-nowrap">Floor Number</th>
                                     <th scope="col" class="text-nowrap">Action</th>
                             </thead>
                             <tbody id="tableBody">
@@ -62,7 +61,7 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Hall</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Room</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -70,22 +69,22 @@
                             <form method="POST" id="myForm">
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Hall Id</label>
+                                        <label  class="col-form-label">Room Number</label>
                                         <input type="text" name="room_num" class="form-control" id="roomNumber" required>
                                         <span id="nameError" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="col-form-label">Hall Name</label>
+                                        <label class="col-form-label">Number of Table</label>
                                         <input type="text" name="num_table" class="form-control required numofTable"
                                             id="numofTable" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Total Seat</label>
+                                        <label  class="col-form-label">Number of Bed</label>
                                         <input type="text" name="bed" class="form-control" id="numofBed" required>
                                         <span id="nameError" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="col-form-label">Avilable Seat</label>
+                                        <label class="col-form-label">Floor Number</label>
                                         <input type="text" name="floor" class="form-control required "
                                             id="floorNum" required>
                                     </div>
@@ -151,7 +150,7 @@
 
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/hall.js"></script>
+    <script src="../../public/JS/room.js"></script>
     <script src="../../public/JS/search.js"></script>
 </body>
 
