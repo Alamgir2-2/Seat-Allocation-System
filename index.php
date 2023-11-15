@@ -74,7 +74,7 @@ include("./app/header.php");
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card cards">
                     <img src="./images/hall2.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">A. F. M. Kamaluddin Hall</h5>
@@ -84,7 +84,7 @@ include("./app/header.php");
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card cards">
                     <img src="./images/hall3.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-title">Bangabandhu Sheikh Mujibur Rahman Hall</h6>
@@ -94,7 +94,7 @@ include("./app/header.php");
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card cards">
                     <img src="./images/hall4.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Shaheed Salam Barkat Hall</h5>
@@ -104,7 +104,7 @@ include("./app/header.php");
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card cards">
                     <img src="./images/hall2.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Maulana Bhashani Hall</h5>
@@ -114,7 +114,7 @@ include("./app/header.php");
                 </div>
             </div>
             <div class="col">
-                <div class="card">
+                <div class="card cards">
                     <img src="./images/hall3.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Shahid Rafiq Jabbar Hall</h5>

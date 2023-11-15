@@ -13,10 +13,16 @@ include("./adminHeader.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
         integrity="sha512-...your-sha512-here..." crossorigin="anonymous" />
-    <link rel="stylesheet" href="../../public/css/styles.css">
-    <title>Dynamic Content Loading</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
@@ -33,11 +39,11 @@ include("./adminHeader.php");
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('orders','./orders.php')">
+                            <a class="nav-link" href="#" onclick="loadContent('students','./students.php')">
                                 <i class="fas fa-shopping-cart"></i> Students
                             </a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('hall', './hall.php')">
                                 <i class="fas fa-users"></i> Halls
@@ -66,20 +72,70 @@ include("./adminHeader.php");
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../../public/JS/student.js"></script>
+    <script src="../../public/JS/loadContent.js"></script>
     <script>
-        function loadContent(page, url) {
-            $.ajax({
-                url: url,
-                method: 'GET',
-                success: function (data) {
-                    $('#dynamic-content').html(data);
-                },
-                error: function () {
-                    $('#dynamic-content').html('Error loading content.');
-                }
-            });
-        }
+        // function loadContent(page, url) {
+        //     $.ajax({
+        //         url: url,
+        //         method: 'GET',
+        //         success: function (data) {
+        //             $('#dynamic-content').html(data);
+        //             // location.reload();
+        //         },
+        //         error: function () {
+        //             $('#dynamic-content').html('Error loading content.');
+        //         }
+        //     });
+        // }
+
+        // function loadContent(page, url) {
+        //     // Store current page in session storage
+        //     sessionStorage.setItem('currentPage', page);
+
+        //     $.ajax({
+        //         url: url,
+        //         method: 'GET',
+        //         success: function (data) {
+        //             $('#dynamic-content').html(data);
+        //         },
+        //         error: function () {
+        //             $('#dynamic-content').html('Error loading content.');
+        //         }
+        //     });
+        // }
+        // $(document).ready(function () {
+        //     const page = sessionStorage.getItem('currentPage');
+        //     if (page) {
+        //         loadContent(page, './' + page + '.php');
+        //     }
+        // });
+
+        // function loadContent(page, url) {
+        //     // Update URL with parameters
+        //     window.history.pushState({ page: page }, null, "?page=" + page);
+
+        //     $.ajax({
+        //         url: url,
+        //         method: 'GET',
+        //         success: function (data) {
+        //             $('#dynamic-content').html(data);
+        //         },
+        //         error: function () {
+        //             $('#dynamic-content').html('Error loading content.');
+        //         }
+        //     });
+        // }
+
+        // // Check for parameters on page load and load content accordingly
+        // $(document).ready(function () {
+        //     const params = new URLSearchParams(window.location.search);
+        //     const page = params.get('page');
+        //     if (page) {
+        //         loadContent(page, './' + page + '.php');
+        //     }
+        // });
+
     </script>
 </body>
 

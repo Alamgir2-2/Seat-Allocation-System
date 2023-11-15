@@ -35,10 +35,10 @@
     padding: 15px;
 }
 
-.card {
+.cards {
     transition: transform 0.3s ease-in-out;
 }
 
-.card:hover {
+.cards:hover {
     transform: scale(1.1);
 }
