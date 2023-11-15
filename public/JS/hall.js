@@ -4,33 +4,35 @@ $(document).ready(function () {
 
     // Insert Data
     $('#submitBtn').click(function () {
-        var room_num = $("#roomNumber").val();
-        var num_table = $("#numofTable").val();
-        var bed = $("#numofBed").val();
-        var floor = $("#floorNum").val();
+        // var hall_id = $("#hallId").val();
+        var hall_name = $("#hallName").val();
+        var total_seat = $("#totalSeat").val();
+        var avil_seat = $("#avilSeat").val();
+        var num_stu = $("#numofStudent").val();
 
 
         // Check if the input field is empty
-        if (room_num.trim() === "") {
+        if (hall_name.trim() === "") {
             $("#nameError").text("Fill the input field").show();
         } else {
             $("#nameError").hide();
 
             $.ajax({
                 type: "POST",
-                url: "../../app/Admin/roomProcess.php",
+                url: "../../app/Admin/hallProcess.php",
                 data: {
                     insert_data: true,
-                    room_num: room_num,
-                    num_table: num_table,
-                    bed: bed,
-                    floor: floor
+                    // hall_id: hall_id,
+                    hall_name: hall_name,
+                    total_seat: total_seat,
+                    avil_seat: avil_seat,
+                    num_stu: num_stu,
                 },
                 success: function (response) {
                     // alert(response);
 
                     if (response === "duplicate") {
-                        toastr.error("Room with Same Number already exist !!.");
+                        toastr.error("Hall with Same Name or Id already exist !!.");
                         $("#myForm")[0].reset();
                         $('#exampleModal').modal('hide');
                         // location.reload();
@@ -61,14 +63,14 @@ $(document).ready(function () {
     // Delete Data 
     $(document).on("click", ".delete_btn", function () {
         if (confirm("Are you sure you want to delete this data?")) {
-            var room_num = $(this).closest('tr').find('.room_num').text();
+            var hall_id = $(this).closest('tr').find('.hall_id').text();
 
             $.ajax({
                 type: "POST",
-                url: "../../app/Admin/roomProcess.php",
+                url: "../../app/Admin/hallProcess.php",
                 data: {
                     delete: true,
-                    room_num: room_num,
+                    hall_id: hall_id,
 
                 },
                 success: function (response) {
@@ -90,29 +92,32 @@ $(document).ready(function () {
 function loadData() {
     $.ajax({
         type: "GET",
-        url: "../../app/Admin/roomData.php",
+        url: "../../app/Admin/hallData.php",
 
         success: function (response) {
             console.log(response);
             $('#tableBody').empty();
 
+            var serialNumber = response.length;
+
             $.each(response, function (key, value) {
                 console.log(response);
-                $('#tableBody').append(
+                $('#tableBody').prepend(
                     '<tr>' +
-                    '<td class="room_num">' + value['room_num'] + '</td>\
-                    <td>'+ value['num_table'] + '</td>\
-                    <td>'+ value['bed'] + '</td>\
-                    <td>'+ value['floor'] + '</td>\
-                    <td>'+ value['floor'] + '</td>\
+                    '<td class="hall_id d-none">' + value['hall_id'] + '</td>\
+                    <td class = "fw-bold">' + serialNumber + '</td>\
+                    <td>'+ value['hall_name'] + '</td>\
+                    <td>'+ value['total_seat'] + '</td>\
+                    <td>'+ value['avil_seat'] + '</td>\
+                    <td>'+ value['num_stu'] + '</td>\
                     <td>\
                     <button id="delete" class="btn btn-danger btn-sm delete_btn"><i class="fa fa-trash"></i></button>\
-                    <button class="btn btn-primary btn-sm edit_btn"><i class="fa fa-edit"></i></button>\
                     <td>\
                     </td>\
                     </td>\
                     </tr>'
                 );
+                serialNumber--;
             });
 
         }

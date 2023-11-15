@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<h4 class="text-center mt-4">Rooms</h4>
+<h4 class="text-center mt-4">Halls</h4>
     <div class="container mt-5 d-flex justify-content-center">
         <div class="card w-100">
             <div class="card-body">
@@ -29,7 +29,7 @@
                     </div>
 
                     <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="fa fa-plus"></i> Room</button>
+                        data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="fa fa-plus"></i> Hall</button>
                 </div>
 
                 <div class="m-2 text-center">
@@ -38,7 +38,6 @@
 
                             <thead>
                                 <tr>
-                                    <!-- <th scope="col" class="text-nowrap">Id</th> -->
                                     <th scope="col" class="text-nowrap">Hall Id</th>
                                     <th scope="col" class="text-nowrap">Hall Name</th>
                                     <th scope="col" class="text-nowrap">Total Seat</th>
@@ -70,24 +69,29 @@
                             <form method="POST" id="myForm">
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Hall Id</label>
-                                        <input type="text" name="room_num" class="form-control" id="roomNumber" required>
-                                        <span id="nameError" class="text-danger"></span>
+                                        <!-- <label  class="col-form-label">Hall Id</label> -->
+                                        <!-- <input type="hidden" name="hall_id" class="form-control" id="hallId" required>
+                                        <span id="nameError" class="text-danger"></span> -->
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Hall Name</label>
-                                        <input type="text" name="num_table" class="form-control required numofTable"
-                                            id="numofTable" required>
+                                        <input type="text" name="hall_name" class="form-control required hallName"
+                                            id="hallName" required>
                                     </div>
                                     <div class="mb-3">
                                         <label  class="col-form-label">Total Seat</label>
-                                        <input type="text" name="bed" class="form-control" id="numofBed" required>
+                                        <input type="text" name="total_seat" class="form-control" id="totalSeat" required>
                                         <span id="nameError" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Avilable Seat</label>
-                                        <input type="text" name="floor" class="form-control required "
-                                            id="floorNum" required>
+                                        <input type="text" name="avil_seat" class="form-control required "
+                                            id="avilSeat" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Number of Student</label>
+                                        <input type="text" name="num_stu" class="form-control required "
+                                            id="numofStudent" required>
                                     </div>
                                     
                                 </div>
