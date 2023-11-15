@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <!-- Edit Modal -->
-                <!-- <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
+                <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -134,8 +134,8 @@
                             <form method="POST" id="editForm">
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label for="fileName" class="col-form-label">Id</label> -->
-                                        <!-- <input type="hidden" name="id" class="form-control" id="id" required>
+                                        <label for="fileName" class="col-form-label">Id</label>
+                                        <input type="hidden" name="id" class="form-control" id="id" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="fileName" class="col-form-label">Name</label>
@@ -143,8 +143,8 @@
                                             required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="fileId" class="col-form-label">File Id</label> -->
-                                        <!-- <input type="hidden" class="form-control" id="file_id" required>
+                                        <label for="fileId" class="col-form-label">File Id</label> 
+                                        <input type="hidden" class="form-control" id="file_id" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -152,12 +152,12 @@
                                         data-bs-dismiss="modal">Close</button>
                                     <button type="button" name="update" id="updateBtn"
                                         class="btn btn-success btn-sm">Update</button>
-                                </div> -->
-                            <!-- </form> -->
+                                </div> 
+                            </form>
 
-                        <!-- </div>
+                        </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>
@@ -170,7 +170,7 @@
 
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/student.js"></script>
+    <script src="../../public/JS/students.js"></script>
 </body>
 
 </html>

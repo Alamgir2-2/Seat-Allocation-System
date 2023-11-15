@@ -5,7 +5,11 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 include("./adminHeader.php");
+
+$_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentPage'] : 'dashboard';
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,14 +31,14 @@ include("./adminHeader.php");
 
 <body>
 
-    <div class="">
+    <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('dashboard', './dashbord.php')">
+                            <a class="nav-link" href="#" onclick="loadContent('dashboard', './dashboard.php')">
                                 <i class="fas fa-home"></i> Dashboard
                             </a>
                         </li>
@@ -71,71 +75,41 @@ include("./adminHeader.php");
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/student.js"></script>
-    <script src="../../public/JS/loadContent.js"></script>
+
+<!-- Load Content -->
     <script>
-        // function loadContent(page, url) {
-        //     $.ajax({
-        //         url: url,
-        //         method: 'GET',
-        //         success: function (data) {
-        //             $('#dynamic-content').html(data);
-        //             // location.reload();
-        //         },
-        //         error: function () {
-        //             $('#dynamic-content').html('Error loading content.');
-        //         }
-        //     });
-        // }
+        $(document).ready(function () {
+            // Load the content based on the session variable
+            loadContent('<?php echo $_SESSION['currentPage']; ?>', './<?php echo $_SESSION['currentPage']; ?>.php');
+        });
 
-        // function loadContent(page, url) {
-        //     // Store current page in session storage
-        //     sessionStorage.setItem('currentPage', page);
+        function loadContent(page, url) {
+            // Update URL with parameters
+            window.history.pushState({ page: page }, null, "?page=" + page);
 
-        //     $.ajax({
-        //         url: url,
-        //         method: 'GET',
-        //         success: function (data) {
-        //             $('#dynamic-content').html(data);
-        //         },
-        //         error: function () {
-        //             $('#dynamic-content').html('Error loading content.');
-        //         }
-        //     });
-        // }
-        // $(document).ready(function () {
-        //     const page = sessionStorage.getItem('currentPage');
-        //     if (page) {
-        //         loadContent(page, './' + page + '.php');
-        //     }
-        // });
+            // Store the current page in a session variable
+            <?php $_SESSION['currentPage'] = "' + page + '"; ?>
 
-        // function loadContent(page, url) {
-        //     // Update URL with parameters
-        //     window.history.pushState({ page: page }, null, "?page=" + page);
+            $.ajax({
+                url: url,
+                method: 'GET',
+                success: function (data) {
+                    $('#dynamic-content').html(data);
+                },
+                error: function () {
+                    $('#dynamic-content').html('Error loading content.');
+                }
+            });
+        }
 
-        //     $.ajax({
-        //         url: url,
-        //         method: 'GET',
-        //         success: function (data) {
-        //             $('#dynamic-content').html(data);
-        //         },
-        //         error: function () {
-        //             $('#dynamic-content').html('Error loading content.');
-        //         }
-        //     });
-        // }
-
-        // // Check for parameters on page load and load content accordingly
-        // $(document).ready(function () {
-        //     const params = new URLSearchParams(window.location.search);
-        //     const page = params.get('page');
-        //     if (page) {
-        //         loadContent(page, './' + page + '.php');
-        //     }
-        // });
-
+        // Check for parameters on page load and load content accordingly
+        $(document).ready(function () {
+            const params = new URLSearchParams(window.location.search);
+            const page = params.get('page');
+            if (page) {
+                loadContent(page, './' + page + '.php');
+            }
+        });
     </script>
 </body>
 

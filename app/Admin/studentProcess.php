@@ -33,5 +33,19 @@ if (isset($_POST['insert_data'])) {
     }
 
 }
-// exit();
+
+
+//   Delete Data
+  if (isset($_POST['delete'])) {
+    $stu_id = $_POST['stu_id'];
+  
+    $delete_query     = "DELETE FROM `students` WHERE stu_id = $stu_id";
+    $delete_query_run = mysqli_query($conn, $delete_query);
+  
+    if ($delete_query_run) {
+      echo $return = "Delete Successfully !";
+    } else {
+      echo $return = "Error";
+    }
+  }
 ?>

@@ -31,7 +31,7 @@ $(document).ready(function () {
                     hall: hall,
                     room: room,
                     block: block
-                }, 
+                },
                 success: function (response) {
                     // alert(response);
 
@@ -41,18 +41,18 @@ $(document).ready(function () {
                         $('#exampleModal').modal('hide');
                         // location.reload();
                     }
-                    else if (response === "success"){
+                    else if (response === "success") {
                         // console.log(response);
-                        
+
 
                         $("#myForm")[0].reset();
                         $('#exampleModal').modal('hide');
-                        
+
                         loadData();
                         // location.reload();
                         toastr.success("Data inserted successfully");
                     }
-                    else{
+                    else {
                         toastr.error("Error inserting data.");
                     }
                 },
@@ -63,10 +63,36 @@ $(document).ready(function () {
         }
 
     });
+
+    // Delete Data 
+    $(document).on("click", ".delete_btn", function () {
+        if (confirm("Are you sure you want to delete this data?")) {
+            var stu_id = $(this).closest('tr').find('.stu_id').text();
+
+            $.ajax({
+                type: "POST",
+                url: "../../app/Admin/studentProcess.php",
+                data: {
+                    delete: true,
+                    stu_id: stu_id,
+
+                },
+                success: function (response) {
+                    toastr.success("Data Delete successfully");
+                    // $('#tableBody').empty();
+                    loadData();
+                }
+            });
+        }
+    });
+
+
 });
 
 
-    // Load Data On Table
+
+
+// Load Data On Table
 function loadData() {
     $.ajax({
         type: "GET",
@@ -78,9 +104,9 @@ function loadData() {
 
             $.each(response, function (key, value) {
                 // console.log(value['stu_name']);
-                $('#tableBody').prepend(
+                $('#tableBody').append(
                     '<tr>' +
-                    '<td>' + value['stu_id'] + '</td>\
+                    '<td class="stu_id">' + value['stu_id'] + '</td>\
                     <td>'+ value['stu_name'] + '</td>\
                     <td>'+ value['dept'] + '</td>\
                     <td>'+ value['session'] + '</td>\
@@ -96,7 +122,7 @@ function loadData() {
                     </tr>'
                 );
             });
-            
+
         }
     });
 }
