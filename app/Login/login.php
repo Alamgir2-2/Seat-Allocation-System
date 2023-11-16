@@ -30,7 +30,7 @@ include("../header.php");
                                     class="form-control form-control-lg" required />
                             </div>
 
-                            <button class="btn btn-primary btn-lg btn-block" name="login" type="submit">Login</button>
+                            <button class="btn btn-primary btn-md btn-block" name="login" type="submit">Login</button>
                         </form>
                         <div id="error-message" class="text-danger mt-2 text-center"></div>
                     </div>
