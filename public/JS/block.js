@@ -4,37 +4,35 @@ $(document).ready(function () {
 
     // Insert Data
     $('#submitBtn').click(function () {
-        // var hall_id = $("#hallId").val();
-        var hall_name = $("#hallName").val();
-        var total_seat = $("#totalSeat").val();
-        var avil_seat = $("#avilSeat").val();
-        var num_stu = $("#numofStudent").val();
+        var block = $("#block").val();
+        var num_room = $("#numofRoom").val();
+        var kitchen = $("#numofKitchen").val();
+        var washroom = $("#numofWashroom").val();
 
 
         // Check if the input field is empty
-        if (hall_name.trim() === "") {
-            $("#nameError").text("Fill the input field").show();
-        } else {
-            $("#nameError").hide();
+        // if (room_num.trim() === "") {
+        //     $("#nameError").text("Fill the input field").show();
+        // } else {
+            // $("#nameError").hide();
 
             $.ajax({
                 type: "POST",
-                url: "../../app/Admin/hallProcess.php",
+                url: "../../app/Admin/blockProcess.php",
                 data: {
                     insert_data: true,
-                    // hall_id: hall_id,
-                    hall_name: hall_name,
-                    total_seat: total_seat,
-                    avil_seat: avil_seat,
-                    num_stu: num_stu,
+                    block: block,
+                    num_room: num_room,
+                    kitchen: kitchen,
+                    washroom: washroom
                 },
                 success: function (response) {
                     // alert(response);
 
                     if (response === "duplicate") {
-                        toastr.error("Hall with Same Name or Id already exist !!.");
+                        toastr.error("Block with Same Name already exist !!.");
                         $("#myForm")[0].reset();
-                        $('#exampleModal').modal('hide'); 
+                        $('#exampleModal').modal('hide');
                         // location.reload();
                     }
                     else if (response === "success") {
@@ -56,21 +54,21 @@ $(document).ready(function () {
                     toastr.error("Error inserting data2.");
                 }
             });
-        }
+        // }
 
     });
 
     // Delete Data 
     $(document).on("click", ".delete_btn", function () {
         if (confirm("Are you sure you want to delete this data?")) {
-            var hall_id = $(this).closest('tr').find('.hall_id').text();
+            var block_id = $(this).closest('tr').find('.block_id').text();
 
             $.ajax({
                 type: "POST",
-                url: "../../app/Admin/hallProcess.php",
+                url: "../../app/Admin/blockProcess.php",
                 data: {
                     delete: true,
-                    hall_id: hall_id,
+                    block_id: block_id,
 
                 },
                 success: function (response) {
@@ -92,24 +90,21 @@ $(document).ready(function () {
 function loadData() {
     $.ajax({
         type: "GET",
-        url: "../../app/Admin/hallData.php",
+        url: "../../app/Admin/blockData.php",
 
         success: function (response) {
             console.log(response);
             $('#tableBody').empty();
 
-            var serialNumber = response.length;
-
             $.each(response, function (key, value) {
                 console.log(response);
-                $('#tableBody').prepend(
+                $('#tableBody').append(
                     '<tr>' +
-                    '<td class="hall_id d-none">' + value['hall_id'] + '</td>\
-                    <td class = "fw-bold">' + serialNumber + '</td>\
-                    <td>'+ value['hall_name'] + '</td>\
-                    <td>'+ value['total_seat'] + '</td>\
-                    <td>'+ value['avil_seat'] + '</td>\
-                    <td>'+ value['num_stu'] + '</td>\
+                    '<td class="block_id d-none">' + value['block_id'] + '</td>\
+                    <td>'+ value['block'] + '</td>\
+                    <td>'+ value['num_room'] + '</td>\
+                    <td>'+ value['kitchen'] + '</td>\
+                    <td>'+ value['washroom'] + '</td>\
                     <td>\
                     <button id="delete" class="btn btn-danger btn-sm delete_btn"><i class="fa fa-trash"></i></button>\
                     <td>\
@@ -117,7 +112,6 @@ function loadData() {
                     </td>\
                     </tr>'
                 );
-                serialNumber--;
             });
 
         }

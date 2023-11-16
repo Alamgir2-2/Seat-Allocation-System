@@ -5,22 +5,21 @@ ini_set('display_errors', 1);
 include('../database/dbConn.php');
 
 if (isset($_POST['insert_data'])) {
-    // $hall_id = $_POST['hall_id'];
-    $hall_name = $_POST['hall_name'];
-    $total_seat = $_POST['total_seat'];
-    $avil_seat = $_POST['avil_seat'];
-    $num_stu = $_POST['num_stu'];
+    $block = $_POST['block'];
+    $num_room = $_POST['num_room'];
+    $kitchen = $_POST['kitchen'];
+    $washroom = $_POST['washroom'];
 
 
 
-    $check_query = "SELECT * FROM `halls` WHERE hall_name = '$hall_name'";
-    $check_query_run = mysqli_query($conn, $check_query); 
+    $check_query = "SELECT * FROM `block` WHERE block = '$block'";
+    $check_query_run = mysqli_query($conn, $check_query);
 
     if (mysqli_num_rows($check_query_run) > 0) {
         echo $return = 'duplicate';
 
     } else {
-        $query = "INSERT INTO `halls` (`hall_name`, `total_seat`, `avil_seat`, `num_stu`) VALUES ('$hall_name', '$total_seat', '$avil_seat','$num_stu')";
+        $query = "INSERT INTO `block` (`block`, `num_room`, `kitchen`, `washroom`) VALUES ('$block','$num_room', '$kitchen', '$washroom')";
         $query_run = mysqli_query($conn, $query);
 
         if ($query_run) {
@@ -36,9 +35,9 @@ if (isset($_POST['insert_data'])) {
 
 //   Delete Data
   if (isset($_POST['delete'])) {
-    $hall_id = $_POST['hall_id'];
+    $block_id = $_POST['block_id'];
   
-    $delete_query = "DELETE FROM `halls` WHERE hall_id = '$hall_id'";
+    $delete_query     = "DELETE FROM `block` WHERE block_id = $block_id";
     $delete_query_run = mysqli_query($conn, $delete_query);
   
     if ($delete_query_run) {

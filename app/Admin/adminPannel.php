@@ -38,29 +38,32 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
+                                <img src="" alt="">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('dashboard', './dashboard.php')">
-                                <i class="fas fa-home"></i> Dashboard
+                                <i class="fas fa-dashboard"></i> Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('students','./students.php')">
-                                <i class="fas fa-shopping-cart"></i> Students
+                                <i class="fas fa-users"></i> Students
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('hall', './hall.php')">
-                                <i class="fas fa-users"></i> Halls
+                                <i class="fas fa-house"></i> Halls
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('products','./products.php')">
+                            <a class="nav-link" href="#" onclick="loadContent('block','./block.php')">
                                 <i class="fas fa-box"></i> Blocks
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('room','./room.php')">
-                                <i class="fas fa-box"></i> Rooms
+                                <i class="fas fa-boxes"></i> Rooms
                             </a>
                         </li>
                     </ul>
@@ -76,7 +79,7 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
     </div>
 
 
-<!-- Load Content -->
+    <!-- Load Content -->
     <script>
         $(document).ready(function () {
             // Load the content based on the session variable
