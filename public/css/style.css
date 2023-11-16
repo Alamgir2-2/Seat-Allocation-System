@@ -2,8 +2,8 @@
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background-color: #343a40;
-    color: #fff;
+    background-color: #0877e6;
+    color: #08237e;
     transition: all 0.3s;
 }
 
@@ -22,7 +22,7 @@
 }
 
 #sidebar .active {
-    background-color: gray;
+    background-color: rgb(128, 128, 128);
 }
 
 #sidebar .active:hover {
@@ -41,4 +41,4 @@
 
 .cards:hover {
     transform: scale(1.1);
-}
+} 

@@ -8,7 +8,7 @@
 </head>
 
 <body>
-        <nav class="navbar navbar-expand-lg bg-light border border-2 bg-primary-subtle fixed-top">
+        <nav class="navbar navbar-expand-lg bg-light border border-2 bg-primary-subtle">
             <div class="container">
                 <a class="navbar-brand nav-container" href="../../../Seat-Allocation-System/index.php"> Seat Management System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -25,7 +25,7 @@
                             <!-- <a class="nav-link" href="#">Seat Allocation</a> -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../../Seat-Allocation-System/app/studentInfo.php">Student Information</a>
+                            <a class="nav-link" href="../../../Seat-Allocation-System/app/Student/studentPanel.php">Student Information</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../../Seat-Allocation-System/app/Login/login.php">Login</a>
@@ -39,3 +39,4 @@
 </body>
 
 </html>
+

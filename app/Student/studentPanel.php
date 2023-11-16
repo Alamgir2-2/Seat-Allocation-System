@@ -1,13 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION['email'])) {
-    header("Location: ../Login/login.php");
-    exit();
-}
-include("./adminHeader.php");
-
-$_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentPage'] : 'dashboard';
-
+include("../header.php");
+$_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentPage'] : 'studentInfo';
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +19,7 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
         src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="../../public/css/style.css">
-    <title>Admin Dashboard</title>
+    <title>Student Information</title>
 </head>
 
 <body class="">
@@ -37,33 +30,28 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
             <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
-                        <li class="nav-item ">
-                                <img class="w-50 text-center" src="../../images/Admin.png" alt="">
+                        <li class="nav-item">
+                                <img src="" alt="">
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('dashboard', './dashboard.php')">
-                                <i class="fas fa-dashboard"></i> Dashboard
+                            <a class="nav-link" href="#" onclick="loadContent('studentInfo', './studentInfo.php')">
+                                <i class="fas fa-users"></i> Student Info
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('students','./students.php')">
-                                <i class="fas fa-users"></i> Students
+                            <a class="nav-link" href="#" onclick="loadContent('students','./hallInfo.php')">
+                                <i class="fas fa-home"></i> Hall Info
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('hall', './hall.php')">
-                                <i class="fas fa-house"></i> Halls
+                            <a class="nav-link" href="#" onclick="loadContent('hall', './roomInfo.php')">
+                                <i class="fas fa-boxes"></i> Room Info
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('block','./block.php')">
-                                <i class="fas fa-box"></i> Blocks
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('room','./room.php')">
-                                <i class="fas fa-boxes"></i> Rooms
+                            <a class="nav-link" href="#" onclick="loadContent('hall', './roomInfo.php')">
+                                <i class="fas fa-align-left"></i> Apply
                             </a>
                         </li>
                     </ul>
