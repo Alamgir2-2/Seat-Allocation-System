@@ -12,7 +12,7 @@
 <body>
         <nav class="navbar navbar-expand-lg bg-light border border-2 bg-primary-subtle">
             <div class="container">
-                <a class="navbar-brand nav-container" href="../../../Seat-Allocation-System/index.php"> Seat Management System</a>
+                <a class="navbar-brand nav-container" href="#"> Seat Management System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
