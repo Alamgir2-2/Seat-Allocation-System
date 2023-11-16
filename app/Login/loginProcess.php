@@ -2,7 +2,7 @@
 session_start();
 include('../database/dbConn.php');
 
-$error_message = "";
+$response = array("success" => false, "message" => "Invalid email or password.");
 
 if (isset($_POST['login'])) {
     $email    = $_POST["email"];
@@ -12,16 +12,17 @@ if (isset($_POST['login'])) {
     $result = mysqli_query($conn, $sql);
 
     if ($result->num_rows > 0) {
-
         $_SESSION['logged_in'] = true;
         $_SESSION['email']    = $email;
         $_SESSION['password'] = $password;
 
-        header("location: ../Admin/adminPannel.php");
-    } else {
-        $error_message = "Invalid email or password.";
+        $response["success"] = true;
+        $response["message"] = "Login successful";
     }
+
+    $conn->close();
 }
 
-$conn->close();
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

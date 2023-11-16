@@ -2,40 +2,72 @@
 include("../header.php");
 ?>
 
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Login</title>
+</head>
 
-<section class="vh-100 bg-info">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+<body class="bg-info">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center align-items-center">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                <div class="card shadow-2-strong border rounded-4 mt-5">
                     <div class="card-body p-5">
 
-                        <h3 class="mb-5 text-center">Login</h3>
+                        <h3 class="mb-3 text-center">Login</h3>
 
-                        <!-- Add the form element with the appropriate action and method attributes -->
                         <form action="./loginProcess.php" method="post">
 
-                            <div class="form-outline mb-2">
-                                <!-- Add the 'name' attribute to the input fields to capture the data on form submission -->
-                                <input type="email" id="typeEmailX-2" name="email" class="form-control form-control-lg"
-                                    required />
+                            <div class="form-outline mb-3">
                                 <label class="form-label" for="typeEmailX-2">Email</label>
+                                <input type="email" id="email" name="email" class="form-control form-control-lg"
+                                    required />
                             </div>
 
                             <div class="form-outline mb-2">
-                                <input type="password" id="typePasswordX-2" name="password"
-                                    class="form-control form-control-lg" required />
                                 <label class="form-label" for="typePasswordX-2">Password</label>
+                                <input type="password" id="password" name="password"
+                                    class="form-control form-control-lg" required />
                             </div>
 
-                            <!-- Change the button type to 'submit' to submit the form -->
                             <button class="btn btn-primary btn-lg btn-block" name="login" type="submit">Login</button>
                         </form>
-                        <!-- End of form -->
-
+                        <div id="error-message" class="text-danger mt-2 text-center"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+
+    <script>
+        $(document).ready(function () {
+            $("form").submit(function (e) {
+                e.preventDefault();
+
+                var formData = {
+                    email: $("#email").val(),
+                    password: $("#password").val(),
+                    login: true
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "./loginProcess.php",
+                    data: formData,
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = "../Admin/adminPannel.php";
+                        } else {
+                            $("#error-message").html(response.message);
+                        }
+                    },
+                    error: function () {
+                        $("#error-message").html("Error occurred during AJAX request.");
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
