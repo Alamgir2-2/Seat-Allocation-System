@@ -20,6 +20,7 @@
                         <input class="form-control w-25" type="text" id="roomNumber" name="roomNumber" required>
                         <button class="btn border" type="button" onclick="searchRoom()"> Search</button>
                     </div>
+                    <span id="error-message" class="text-danger"></span>
                 </form>
             </div>
 
@@ -33,7 +34,12 @@
         function searchRoom() {
             var roomNumber = $('#roomNumber').val();
 
-            // Make an AJAX request to the backend PHP script
+            if (roomNumber.trim() === '') {
+                $('#error-message').text('Please enter a Room Number');
+                return;
+            }
+            $('#error-message').text('');
+
             $.ajax({
                 type: 'GET',
                 url: './roomData.php',
@@ -77,7 +83,6 @@
                 },
                 error: function (error) {
                     console.error('Error:', error.responseText);
-                    // Handle errors
                 }
             });
         }

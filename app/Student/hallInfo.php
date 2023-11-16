@@ -21,18 +21,16 @@
 
     <script>
         $(document).ready(function () {
-            // Make an AJAX request to the backend PHP script
             $.ajax({
                 type: 'GET',
                 url: './hallInfoData.php',
                 dataType: 'json',
                 success: function (data) {
-                    // Update the frontend with the retrieved hall information
                     if (data.error) {
                         $('#hallInfo').html('<p class="alert alert-danger">' + data.error + '</p>');
                     } else {
-                        // Display hall information in a table with Bootstrap styling
-                        var infoHTML = '<table class="table table-striped border text-center">' +
+                        // Display hall information in a table
+                        var infoHTML = '<table class="table table-striped border border-3 text-center">' +
                             '<thead>' +
                             '<tr><th scope="col">Hall Name</th>'+
                             '<th scope="col">Total Seats</th>'+
@@ -58,7 +56,6 @@
                 },
                 error: function (error) {
                     console.error('Error:', error.responseText);
-                    // Handle errors
                 }
             });
         });

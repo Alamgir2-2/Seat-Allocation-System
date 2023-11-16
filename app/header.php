@@ -25,7 +25,7 @@
                             <!-- <a class="nav-link" href="#">Seat Allocation</a> -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../../../Seat-Allocation-System/app/Student/studentPanel.php">Student Information</a>
+                            <a class="nav-link" href="../../../Seat-Allocation-System/app/Student/studentPanel.php">Information</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../../../Seat-Allocation-System/app/Login/login.php">Login</a>

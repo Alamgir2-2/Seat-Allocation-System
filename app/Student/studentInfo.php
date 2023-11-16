@@ -20,6 +20,7 @@
                         <input class="form-control w-25" type="text" id="studentId" name="studentId" required>
                         <button class="btn border" type="button" onclick="searchStudent()"> Search</button>
                     </div>
+                    <span id="error-message" class="text-danger"></span>
                 </form>
             </div>
 
@@ -33,12 +34,18 @@
         function searchStudent() {
             var stu_id = $('#studentId').val();
 
+            if (stu_id.trim() === '') {
+                $('#error-message').text('Please enter a student ID');
+                return;
+            }
+            $('#error-message').text('');
+
             // Make an AJAX request to the backend PHP script
             $.ajax({
                 type: 'GET',
                 url: './studentData.php',
-                data: { 
-                    stu_id: stu_id 
+                data: {
+                    stu_id: stu_id
                 },
                 dataType: 'json',
                 success: function (data) {
@@ -46,18 +53,18 @@
                     if (data.error) {
                         $('#studentInfo').html('<p>' + data.error + '</p>');
                     } else {
-                        var infoHTML = '<table class="table table-striped border rounded mt-4 text-center">' +
-                    '<tbody>' +
-                    '<tr><th scope="row">Name</th><td>' + data.stu_name + '</td></tr>' +
-                    '<tr><th scope="row">Department</th><td>' + data.dept + '</td></tr>' +
-                    '<tr><th scope="row">Hall</th><td>' + data.hall + '</td></tr>' +
-                    '<tr><th scope="row">Room</th><td>' + data.room + '</td></tr>' +
-                    '<tr><th scope="row">Session</th><td>' + data.session + '</td></tr>' +
-                    '<tr><th scope="row">Block</th><td>' + data.block + '</td></tr>' +
-                    '</tbody>' +
-                    '</table>';
+                        var infoHTML = '<table class="table table-striped border border-3 mt-4 text-center">' +
+                            '<tbody>' +
+                            '<tr><th scope="row">Name</th><td>' + data.stu_name + '</td></tr>' +
+                            '<tr><th scope="row">Department</th><td>' + data.dept + '</td></tr>' +
+                            '<tr><th scope="row">Hall</th><td>' + data.hall + '</td></tr>' +
+                            '<tr><th scope="row">Room</th><td>' + data.room + '</td></tr>' +
+                            '<tr><th scope="row">Session</th><td>' + data.session + '</td></tr>' +
+                            '<tr><th scope="row">Block</th><td>' + data.block + '</td></tr>' +
+                            '</tbody>' +
+                            '</table>';
 
-                $('#studentInfo').html(infoHTML);
+                        $('#studentInfo').html(infoHTML);
                     }
                 },
                 error: function (error) {

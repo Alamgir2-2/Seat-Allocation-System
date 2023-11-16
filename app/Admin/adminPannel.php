@@ -6,7 +6,7 @@ if (!isset($_SESSION['email'])) {
 }
 include("./adminHeader.php");
 
-$_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentPage'] : 'dashboard';
+$_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentPage'] : 'students';
 
 ?>
 
@@ -40,11 +40,11 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
                         <li class="nav-item ">
                                 <img class="w-50 text-center" src="../../images/Admin.png" alt="">
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('dashboard', './dashboard.php')">
                                 <i class="fas fa-dashboard"></i> Dashboard
                             </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('students','./students.php')">
                                 <i class="fas fa-users"></i> Students
