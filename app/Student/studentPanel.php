@@ -39,18 +39,18 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('students','./hallInfo.php')">
+                            <a class="nav-link" href="#" onclick="loadContent('hallInfo','./hallInfo.php')">
                                 <i class="fas fa-home"></i> Hall Info
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('hall', './roomInfo.php')">
+                            <a class="nav-link" href="#" onclick="loadContent('roomInfo', './roomInfo.php')">
                                 <i class="fas fa-boxes"></i> Room Info
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="loadContent('hall', './roomInfo.php')">
+                            <a class="nav-link" href="#" onclick="loadContent('apply', './apply.php')">
                                 <i class="fas fa-align-left"></i> Apply
                             </a>
                         </li>

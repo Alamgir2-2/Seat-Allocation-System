@@ -46,7 +46,7 @@
                     if (data.error) {
                         $('#studentInfo').html('<p>' + data.error + '</p>');
                     } else {
-                        var infoHTML = '<table class="table table-bordered mt-4 text-center">' +
+                        var infoHTML = '<table class="table table-striped border rounded mt-4 text-center">' +
                     '<tbody>' +
                     '<tr><th scope="row">Name</th><td>' + data.stu_name + '</td></tr>' +
                     '<tr><th scope="row">Department</th><td>' + data.dept + '</td></tr>' +
