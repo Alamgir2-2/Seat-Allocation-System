@@ -9,80 +9,65 @@
 </head>
 
 <body>
-    <h1 class="text-center">Room Information</h1>
-
-    <div class="container card">
+    <h2 class="mt-4 text-center">Room Search</h2>
+    <div class="container mt-5 card">
         <div class="card-body">
-            <div>
-                <form id="searchForm">
-                    <label class="" for="roomNumber">Enter Room Number</label>
-                    <div class="d-flex">
-                        <input class="form-control w-25" type="text" id="roomNumber" name="roomNumber" required>
-                        <button class="btn border" type="button" onclick="searchRoom()"> Search</button>
-                    </div>
-                    <span id="error-message" class="text-danger"></span>
-                </form>
-            </div>
+            <form id="searchForm">
+                <label for="roomNumber">Enter Room Number</label>
+                <div class="form-group d-flex">
+                    <input type="text" class="form-control ml-2 w-25" id="roomNumber" name="roomNumber" required>
+                    <button type="button" class="btn btn-primary ml-2" onclick="searchByRoom()">Search</button>
+                </div>
+            </form>
 
-            <div id="roomInfo">
-                <!-- Display room information here -->
-            </div>
+            <div id="resultContainer" class="mt-4"></div>
         </div>
     </div>
 
     <script>
-        function searchRoom() {
-            var roomNumber = $('#roomNumber').val();
-
-            if (roomNumber.trim() === '') {
-                $('#error-message').text('Please enter a Room Number');
-                return;
-            }
-            $('#error-message').text('');
+        function searchByRoom() {
+            var roomNumber = $("#roomNumber").val();
 
             $.ajax({
-                type: 'GET',
-                url: './roomData.php',
-                data: {
-                    roomNumber: roomNumber
-                },
-                dataType: 'json',
-                success: function (data) {
-                    // Update the frontend with the retrieved room information
-                    if (data.error) {
-                        $('#roomInfo').html('<p class="alert alert-danger mt-4">' + data.error + '</p>');
+                url: "./roomData.php",
+                method: "GET",
+                data: { room_number: roomNumber },
+                success: function (response) {
+                    var data = $.parseJSON(response);
+
+                    if (data.length > 0) {
+                        var resultText = '<h4>Number of Students in Room ' + roomNumber + ': ' + data.length + '</h4>';
+                        resultText += '<table class="table table-striped border border-3 mt-3">' +
+                            '<thead>' +
+                            '<tr>' +
+                            '<th>Student Name</th>' +
+                            '<th>Department</th>' +
+                            '<th>Session</th>' +
+                            '<th>Hall Name</th>' +
+                            '</tr>' +
+                            '</thead>' +
+                            '<tbody>';
+
+                        // Populate the table rows with data
+                        $.each(data, function (index, row) {
+                            resultText += '<tr>' +
+                                '<td>' + row.student_name + '</td>' +
+                                '<td>' + row.dept_name + '</td>' +
+                                '<td>' + row.session + '</td>' +
+                                '<td>' + row.hall_name + '</td>' +
+                                '</tr>';
+                        });
+
+                        resultText += '</tbody></table>';
+
+                        // Update the result container with the table
+                        $("#resultContainer").html(resultText);
                     } else {
-                        // Display the count and information of students in the room
-                        var infoHTML = '<p class="mt-3">Number of students in Room ' + roomNumber + '- ' + data.count + '</p>';
-
-                        if (data.students.length > 0) {
-                            infoHTML += '<table class="table table-striped border">' +
-                                '<thead>' +
-                                '<tr><th scope="col">Student Name</th>'+
-                                '<th scope="col">Department</th>'+
-                                '<th scope="col">Session</th>'+
-                                '<th scope="col">Hall</th>'+
-                                '</tr>' +
-                                '</thead>' +
-                                '<tbody>';
-
-                            for (var i = 0; i < data.students.length; i++) {
-                                infoHTML += '<tr>' +
-                                    '<td>' + data.students[i].stu_name + '</td>' +
-                                    '<td>' + data.students[i].dept + '</td>' +
-                                    '<td>' + data.students[i].session + '</td>' +
-                                    '<td>' + data.students[i].hall + '</td>' +
-                                    '</tr>';
-                            }
-
-                            infoHTML += '</tbody></table>';
-                        }
-
-                        $('#roomInfo').html(infoHTML);
+                        $("#resultContainer").html("No students found in Room " + roomNumber);
                     }
                 },
-                error: function (error) {
-                    console.error('Error:', error.responseText);
+                error: function (xhr, status, error) {
+                    console.error("AJAX Error: " + status + " - " + error);
                 }
             });
         }

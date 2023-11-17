@@ -36,7 +36,7 @@ $(document).ready(function () {
                         // location.reload();
                     }
                     else if (response === "success") {
-                        console.log(response);
+                        // console.log(response);
 
 
                         $("#myForm")[0].reset();
@@ -93,11 +93,11 @@ function loadData() {
         url: "../../app/Admin/roomData.php",
 
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             $('#tableBody').empty();
 
             $.each(response, function (key, value) {
-                console.log(response);
+                // console.log(response);
                 $('#tableBody').append(
                     '<tr>' +
                     '<td class="room_number">' + value['room_number'] + '</td>\

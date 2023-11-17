@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1 class="text-center">Hall Information</h1>
+    <h1 class="text-center my-3">Hall Information</h1>
 
     <div class="container card">
         <div class="card-body">
@@ -44,8 +44,8 @@
                             infoHTML += '<tr>' +
                                 '<td>' + data[i].hall_name + '</td>' +
                                 '<td>' + data[i].total_seat + '</td>' +
-                                '<td>' + data[i].avil_seat + '</td>' +
-                                '<td>' + data[i].num_stu + '</td>' +
+                                '<td>' + data[i].available_seat + '</td>' +
+                                '<td>' + data[i].total_student + '</td>' +
                                 '</tr>';
                         }
 

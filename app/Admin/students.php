@@ -42,7 +42,7 @@ include('../database/dbConn.php');
 
                             <thead>
                                 <tr>
-                                    <!-- <th scope="col" class="text-nowrap">Id</th> -->
+                                    <th scope="col" class="text-nowrap">Serial</th>
                                     <th scope="col" class="text-nowrap">Student Id</th>
                                     <th scope="col" class="text-nowrap">Name</th>
                                     <th scope="col" class="text-nowrap">Session</th>
@@ -132,7 +132,7 @@ include('../database/dbConn.php');
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/student.js"></script>
+    <script src="../../public/JS/students.js"></script>
     <script src="../../public/JS/search.js"></script>
 </body>
 

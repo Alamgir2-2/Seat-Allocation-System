@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2023 at 07:35 PM
+-- Generation Time: Nov 17, 2023 at 06:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -43,98 +43,146 @@ INSERT INTO `admin` (`id`, `email`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `block`
+-- Table structure for table `Allocation`
 --
 
-CREATE TABLE `block` (
-  `block_id` int(100) NOT NULL,
-  `block` varchar(100) NOT NULL,
-  `num_room` int(100) NOT NULL,
-  `kitchen` int(100) NOT NULL,
-  `washroom` int(100) NOT NULL
+CREATE TABLE `Allocation` (
+  `allocation_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `room_number` int(11) NOT NULL,
+  `hall_id` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `block`
+-- Dumping data for table `Allocation`
 --
 
-INSERT INTO `block` (`block_id`, `block`, `num_room`, `kitchen`, `washroom`) VALUES
-(2, '1/A', 10, 3, 6),
-(3, '1/B', 10, 3, 6),
-(4, '2/A', 12, 4, 6),
-(5, '2/B', 11, 4, 5);
+INSERT INTO `Allocation` (`allocation_id`, `student_id`, `room_number`, `hall_id`, `start_date`, `end_date`) VALUES
+(2, 2014, 102, 1, '2023-11-12', '2024-04-20'),
+(3, 1920016, 102, 1, '2023-11-23', '2023-11-26'),
+(4, 2034, 103, 16, '2023-11-09', '2026-10-24'),
+(5, 1925005, 101, 3, '2023-11-20', '2025-02-20'),
+(6, 2024, 101, 3, '2023-11-15', '2025-07-15'),
+(7, 2031, 101, 15, '2023-11-23', '2025-06-20');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `halls`
+-- Table structure for table `Block`
 --
 
-CREATE TABLE `halls` (
-  `hall_id` int(100) NOT NULL,
-  `hall_name` varchar(100) NOT NULL,
-  `total_seat` int(100) NOT NULL,
-  `avil_seat` int(100) NOT NULL,
-  `num_stu` int(100) NOT NULL
+CREATE TABLE `Block` (
+  `block_id` int(11) NOT NULL,
+  `block` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `halls`
+-- Dumping data for table `Block`
 --
 
-INSERT INTO `halls` (`hall_id`, `hall_name`, `total_seat`, `avil_seat`, `num_stu`) VALUES
-(2, 'Al Beruni Hall', 1450, 320, 1050),
-(5, 'Khaleda Zia Hall', 1600, 290, 1300),
-(6, 'Sheikh Hasina Hall', 1550, 420, 1250),
-(7, 'Shahid Rafiq Jabbar Hall', 780, 85, 690);
+INSERT INTO `Block` (`block_id`, `block`) VALUES
+(1, '1/A'),
+(2, '2/A'),
+(3, '3/A'),
+(4, '3/B');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rooms`
+-- Table structure for table `Dept`
 --
 
-CREATE TABLE `rooms` (
-  `room_num` int(100) NOT NULL,
-  `num_table` int(100) NOT NULL,
-  `bed` int(100) NOT NULL,
-  `floor` varchar(100) NOT NULL
+CREATE TABLE `Dept` (
+  `dept_id` int(11) NOT NULL,
+  `dept_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `rooms`
+-- Dumping data for table `Dept`
 --
 
-INSERT INTO `rooms` (`room_num`, `num_table`, `bed`, `floor`) VALUES
-(101, 4, 4, '1'),
-(143, 4, 4, '1/A'),
-(203, 5, 5, '3/A'),
-(231, 5, 4, '2/B');
+INSERT INTO `Dept` (`dept_id`, `dept_name`) VALUES
+(1, 'IIT'),
+(2, 'CSE'),
+(3, 'ICT'),
+(4, 'MIS'),
+(5, 'ICE'),
+(6, 'MATH');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `students`
+-- Table structure for table `Hall`
 --
 
-CREATE TABLE `students` (
-  `stu_id` int(100) NOT NULL,
-  `stu_name` varchar(100) NOT NULL,
-  `dept` varchar(100) NOT NULL,
-  `session` varchar(100) NOT NULL,
-  `hall` varchar(100) NOT NULL,
-  `block` varchar(100) NOT NULL,
-  `room` varchar(100) NOT NULL
+CREATE TABLE `Hall` (
+  `hall_id` int(11) NOT NULL,
+  `hall_name` varchar(50) NOT NULL,
+  `total_seat` int(11) DEFAULT NULL,
+  `available_seat` int(11) DEFAULT NULL,
+  `total_student` int(11) DEFAULT NULL,
+  `block_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `students`
+-- Dumping data for table `Hall`
 --
 
-INSERT INTO `students` (`stu_id`, `stu_name`, `dept`, `session`, `hall`, `block`, `room`) VALUES
-(1234, 'Alamgir', 'IIT', '2018-19', 'Abdus Salam Hall', 'B', '321'),
-(1925005, 'Prosanto Deb', 'SE', '2018-19', 'Al Beruni Hall', 'B', '321'),
-(1925016, 'Alamgir Hossani', 'IIT', '2018-19', 'Malek Ukil Hall', 'D', '450');
+INSERT INTO `Hall` (`hall_id`, `hall_name`, `total_seat`, `available_seat`, `total_student`, `block_id`) VALUES
+(1, 'Al Beruni Hall', 1450, 765, 1234, 2),
+(3, 'Maulana Vasani Hall', 1000, 200, 800, 2),
+(15, 'Banga Bandhu Hall', 780, 105, 670, 3),
+(16, 'Shahid Rafiq Jabbar Hall', 1200, 300, 1250, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Room`
+--
+
+CREATE TABLE `Room` (
+  `room_number` int(11) NOT NULL,
+  `bed` int(11) DEFAULT NULL,
+  `table_count` int(11) DEFAULT NULL,
+  `hall_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Room`
+--
+
+INSERT INTO `Room` (`room_number`, `bed`, `table_count`, `hall_id`) VALUES
+(101, 4, 4, 1),
+(102, 6, 6, 1),
+(103, 6, 6, 16),
+(104, 4, 4, 15);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Student`
+--
+
+CREATE TABLE `Student` (
+  `student_id` int(11) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `dept_id` int(11) DEFAULT NULL,
+  `session` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `Student`
+--
+
+INSERT INTO `Student` (`student_id`, `name`, `dept_id`, `session`) VALUES
+(2014, 'Mostaq Ali', 1, '2019-20'),
+(2024, 'Riaz', 3, '2020-21'),
+(2031, 'Rafi ', 4, '2019-20'),
+(2034, 'Hasan Mahmud', 5, '2021-22'),
+(1920016, 'Alamgir', 2, '2018-19'),
+(1925005, 'Prosanto Deb', 2, '2018-19');
 
 --
 -- Indexes for dumped tables
@@ -147,28 +195,46 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `block`
+-- Indexes for table `Allocation`
 --
-ALTER TABLE `block`
+ALTER TABLE `Allocation`
+  ADD PRIMARY KEY (`allocation_id`),
+  ADD KEY `student_id` (`student_id`),
+  ADD KEY `room_number` (`room_number`),
+  ADD KEY `hall_id` (`hall_id`);
+
+--
+-- Indexes for table `Block`
+--
+ALTER TABLE `Block`
   ADD PRIMARY KEY (`block_id`);
 
 --
--- Indexes for table `halls`
+-- Indexes for table `Dept`
 --
-ALTER TABLE `halls`
-  ADD PRIMARY KEY (`hall_id`);
+ALTER TABLE `Dept`
+  ADD PRIMARY KEY (`dept_id`);
 
 --
--- Indexes for table `rooms`
+-- Indexes for table `Hall`
 --
-ALTER TABLE `rooms`
-  ADD PRIMARY KEY (`room_num`);
+ALTER TABLE `Hall`
+  ADD PRIMARY KEY (`hall_id`),
+  ADD KEY `block_id` (`block_id`);
 
 --
--- Indexes for table `students`
+-- Indexes for table `Room`
 --
-ALTER TABLE `students`
-  ADD PRIMARY KEY (`stu_id`);
+ALTER TABLE `Room`
+  ADD PRIMARY KEY (`room_number`),
+  ADD KEY `hall_id` (`hall_id`);
+
+--
+-- Indexes for table `Student`
+--
+ALTER TABLE `Student`
+  ADD PRIMARY KEY (`student_id`),
+  ADD KEY `dept_id` (`dept_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -181,22 +247,40 @@ ALTER TABLE `admin`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `block`
+-- AUTO_INCREMENT for table `Allocation`
 --
-ALTER TABLE `block`
-  MODIFY `block_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `Allocation`
+  MODIFY `allocation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `halls`
+-- Constraints for dumped tables
 --
-ALTER TABLE `halls`
-  MODIFY `hall_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `rooms`
+-- Constraints for table `Allocation`
 --
-ALTER TABLE `rooms`
-  MODIFY `room_num` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=232;
+ALTER TABLE `Allocation`
+  ADD CONSTRAINT `Allocation_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `Student` (`student_id`),
+  ADD CONSTRAINT `Allocation_ibfk_2` FOREIGN KEY (`room_number`) REFERENCES `Room` (`room_number`),
+  ADD CONSTRAINT `Allocation_ibfk_3` FOREIGN KEY (`hall_id`) REFERENCES `Hall` (`hall_id`);
+
+--
+-- Constraints for table `Hall`
+--
+ALTER TABLE `Hall`
+  ADD CONSTRAINT `Hall_ibfk_1` FOREIGN KEY (`block_id`) REFERENCES `Block` (`block_id`);
+
+--
+-- Constraints for table `Room`
+--
+ALTER TABLE `Room`
+  ADD CONSTRAINT `Room_ibfk_1` FOREIGN KEY (`hall_id`) REFERENCES `Hall` (`hall_id`);
+
+--
+-- Constraints for table `Student`
+--
+ALTER TABLE `Student`
+  ADD CONSTRAINT `Student_ibfk_1` FOREIGN KEY (`dept_id`) REFERENCES `Dept` (`dept_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

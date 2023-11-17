@@ -1,38 +1,45 @@
 <?php
 include("../database/dbConn.php");
 
-function get_students_in_room($roomNumber, $conn) {
-    $sql = "SELECT * FROM students WHERE room = '" . $roomNumber . "'";
-    $result = $conn->query($sql);
+// Get the room_number from user input
+$roomNumber = $_GET['room_number']; // You should validate and sanitize user input to prevent SQL injection
 
-    $students = [];
+// SQL query to fetch student information based on room_number
+$sql = "SELECT
+            Student.name AS student_name,
+            Student.session,
+            Dept.dept_name,
+            Hall.hall_name
+        FROM
+            Allocation
+            JOIN Student ON Allocation.student_id = Student.student_id
+            JOIN Dept ON Student.dept_id = Dept.dept_id
+            JOIN Hall ON Allocation.hall_id = Hall.hall_id
+        WHERE
+            Allocation.room_number = $roomNumber";
 
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $students[] = [
-                'stu_name' => $row['stu_name'],
-                'dept' => $row['dept'],
-                'session' => $row['session'],
-                'hall' => $row['hall'],
-            ];
-        }
+$result = $conn->query($sql);
 
-        $count = count($students);
-    } else {
-        return ['error' => 'No students found in the specified room'];
+$response = array();
+
+if ($result->num_rows > 0) {
+    // Output data of each row
+    while ($row = $result->fetch_assoc()) {
+        // Add each row to the response array
+        $response[] = array(
+            'student_name' => $row["student_name"],
+            'dept_name' => $row["dept_name"],
+            'session' => $row["session"],
+            'hall_name' => $row["hall_name"]
+        );
     }
-
-    return ['count' => $count, 'students' => $students];
-}
-
-if (isset($_GET['roomNumber'])) {
-    $roomNumber = $_GET['roomNumber'];
-    $students_in_room = get_students_in_room($roomNumber, $conn);
-
-    // Return the data as JSON
-    echo json_encode($students_in_room);
 } else {
-    // Handle invalid or missing parameters
-    echo json_encode(['error' => 'Invalid request']);
+    $response['error'] = "No students found in Room $roomNumber";
 }
+
+// Close the database connection
+$conn->close();
+
+// Convert the response array to JSON and echo it
+echo json_encode($response);
 ?>

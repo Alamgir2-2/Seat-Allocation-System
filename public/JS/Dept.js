@@ -32,7 +32,7 @@ $(document).ready(function () {
                     // location.reload();
                 }
                 else if (response === "success") {
-                    console.log(response);
+                    // console.log(response);
 
 
                     $("#myForm")[0].reset();
@@ -90,11 +90,11 @@ function loadData() {
         url: "../../app/Admin/deptData.php",
 
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             $('#tableBody').empty();
 
             $.each(response, function (key, value) {
-                console.log(response);
+                // console.log(response);
                 $('#tableBody').append(
                     '<tr>' +
                     '<td class="dept_id">' + value['dept_id'] + '</td>\

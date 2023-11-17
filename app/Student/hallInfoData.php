@@ -2,7 +2,7 @@
 include("../database/dbConn.php");
 
 function get_hall_info($conn) {
-    $sql = "SELECT * FROM halls";
+    $sql = "SELECT * FROM Hall";
     $result = $conn->query($sql);
 
     $hall_info = [];
@@ -12,8 +12,8 @@ function get_hall_info($conn) {
             $hall_info[] = [
                 'hall_name' => $row['hall_name'],
                 'total_seat' => $row['total_seat'],
-                'avil_seat' => $row['avil_seat'],
-                'num_stu' => $row['num_stu'],
+                'available_seat' => $row['available_seat'],
+                'total_student' => $row['total_student'],
             ];
         }
     } else {
