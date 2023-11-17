@@ -35,7 +35,10 @@
                 success: function (response) {
                     var data = $.parseJSON(response);
 
-                    if (data.length > 0) {
+                    if ('error' in data) {
+                        // Display an error message when no room is found
+                        $("#resultContainer").html(data.error);
+                    } else if (data.length > 0) {
                         var resultText = '<h4>Number of Students in Room ' + roomNumber + ': ' + data.length + '</h4>';
                         resultText += '<table class="table table-striped border border-3 mt-3">' +
                             '<thead>' +
