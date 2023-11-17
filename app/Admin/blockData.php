@@ -4,7 +4,7 @@
 include('../database/dbConn.php');
 
 // Fetch data from the "exam" table
-$query = "SELECT * FROM `block`";
+$query = "SELECT * FROM `Block`";
 $result = mysqli_query($conn, $query);
 
 // Prepare an array to store the dataa

@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<h4 class="text-center mt-4">Block</h4>
+    <h4 class="text-center mt-4">Block</h4>
     <div class="container mt-5 d-flex justify-content-center">
         <div class="card w-100">
             <div class="card-body">
@@ -38,12 +38,9 @@
 
                             <thead>
                                 <tr>
-                                    <!-- <th scope="col" class="text-nowrap">Id</th> -->
+                                    <th scope="col" class="text-nowrap">Block Id</th>
                                     <th scope="col" class="text-nowrap">Block</th>
-                                    <th scope="col" class="text-nowrap">Number of Room</th>
-                                    <th scope="col" class="text-nowrap">Number of Kitchen</th>
-                                    <th scope="col" class="text-nowrap">Number of Washroom</th>
-                                    <th scope="col" class="text-nowrap">Action</th>
+
                             </thead>
                             <tbody id="tableBody">
                                 <!-- Table Data Apeare Here  -->
@@ -69,26 +66,15 @@
                             <form method="POST" id="myForm">
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Block</label>
+                                        <label class="col-form-label">Block Id</label>
+                                        <input type="number" name="block_id" class="form-control" id="blockId" required>
+                                        <span id="nameError" class="text-danger"></span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="col-form-label">Block</label>
                                         <input type="text" name="block" class="form-control" id="block" required>
-                                        <span id="nameError" class="text-danger"></span>
                                     </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Number of Room</label>
-                                        <input type="text" name="num_room" class="form-control required numofRoom"
-                                            id="numofRoom" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label  class="col-form-label">Number of Kitchen</label>
-                                        <input type="text" name="kitchen" class="form-control" id="numofKitchen" required>
-                                        <span id="nameError" class="text-danger"></span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="col-form-label">Number of Washroom</label>
-                                        <input type="text" name="washroom" class="form-control required "
-                                            id="numofWashroom" required>
-                                    </div>
-                                    
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -102,7 +88,7 @@
                     </div>
                 </div>
                 <!-- Edit Modal -->
-                <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -137,7 +123,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -148,9 +134,9 @@
 
 
 
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/block.js"></script>
+    <script src="../../public/JS/blocks.js"></script>
     <script src="../../public/JS/search.js"></script>
 </body>
 
