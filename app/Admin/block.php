@@ -40,6 +40,7 @@
                                 <tr>
                                     <th scope="col" class="text-nowrap">Block Id</th>
                                     <th scope="col" class="text-nowrap">Block</th>
+                                    <th scope="col" class="text-nowrap">Action</th>
 
                             </thead>
                             <tbody id="tableBody">

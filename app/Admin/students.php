@@ -1,3 +1,7 @@
+<?php
+include('../database/dbConn.php');
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +18,7 @@
 </head>
 
 <body>
-<h4 class="text-center mt-4">Students</h4>
+    <h4 class="text-center mt-4">Students</h4>
     <div class="container mt-5 d-flex justify-content-center">
         <div class="card w-100">
             <div class="card-body">
@@ -41,13 +45,9 @@
                                     <!-- <th scope="col" class="text-nowrap">Id</th> -->
                                     <th scope="col" class="text-nowrap">Student Id</th>
                                     <th scope="col" class="text-nowrap">Name</th>
-                                    <th scope="col" class="text-nowrap">Department</th>
                                     <th scope="col" class="text-nowrap">Session</th>
-                                    <th scope="col" class="text-nowrap">Hall</th>
-                                    <th scope="col" class="text-nowrap">Room</th>
-                                    <th scope="col" class="text-nowrap">Block</th>
+                                    <!-- <th scope="col" class="text-nowrap">Depertment Id</th> -->
                                     <th scope="col" class="text-nowrap">Action</th>
-                                </tr>
                             </thead>
                             <tbody id="tableBody">
                                 <!-- Table Data Apeare Here  -->
@@ -73,42 +73,41 @@
                             <form method="POST" id="myForm">
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Student Id</label>
-                                        <input type="text" name="stu_id" class="form-control" id="stuendtId" required>
+                                        <label class="col-form-label">Student Id</label>
+                                        <input type="text" name="student_id" class="form-control" id="studentId"
+                                            required>
                                         <span id="nameError" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="fileId" class="col-form-label">Name</label>
-                                        <input type="text" name="stu_name" class="form-control required stuendtName"
-                                            id="stuendtName" required>
+                                        <label class="col-form-label">Name</label>
+                                        <input type="text" name="name" class="form-control required name"
+                                            id="name" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Department</label>
-                                        <input type="text" name="dept" class="form-control" id="deptName" required>
+                                        <label class="col-form-label">Session</label>
+                                        <input type="text" name="session" class="form-control" id="session" required>
                                         <span id="nameError" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="session" class="col-form-label">Session</label>
-                                        <input type="text" name="session" class="form-control required "
-                                            id="session" required>
+                                        <label class="col-form-label">Department Id</label>
+                                        <select name="dept_id" class="form-control required" id="deptId" required>
+                                            <option value="Select Dept Id" class="form-control">Select Dept Id</option>
+                                            <?php
+                                            $sql = "SELECT * FROM `Dept`";
+
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<option>' . $row["dept_id"] . '</option>';
+                                                }
+                                            } else {
+                                                echo '<option>No Hall found</option>';
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="hall" class="col-form-label">Hall</label>
-                                        <input type="text" name="hall_name" class="form-control required hallName"
-                                            id="hallName" required>
-                                        <!-- <small id="idError">Fill the input field</small> -->
-                                    </div>
-                                    <div class="mb-3">
-                                        <label  class="col-form-label">Room</label>
-                                        <input type="text" name="room" class="form-control" id="roomNo" required>
-                                        <span id="nameError" class="text-danger"></span>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="block" class="col-form-label">Block</label>
-                                        <input type="text" name="block" class="form-control required block"
-                                            id="block" required>
-                                        <!-- <small id="idError">Fill the input field</small> -->
-                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -120,44 +119,7 @@
 
                         </div>
                     </div>
-                </div>
-                <!-- Edit Modal -->
-                <!-- <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editDataLabel">Edit File</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-
-                            <form method="POST" id="editForm">
-                                <div class="modal-body">
-                                    <div class="mb-3">
-                                        <label for="fileName" class="col-form-label">Id</label>
-                                        <input type="hidden" name="id" class="form-control" id="id" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="fileName" class="col-form-label">Name</label>
-                                        <input type="text" name="file_name" class="form-control" id="file_name"
-                                            required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="fileId" class="col-form-label">File Id</label> 
-                                        <input type="hidden" class="form-control" id="file_id" required>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger btn-sm"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" name="update" id="updateBtn"
-                                        class="btn btn-success btn-sm">Update</button>
-                                </div> 
-                            </form>
-
-                        </div>
-                    </div>
-                </div> -->
+                </div>               
             </div>
         </div>
     </div>
@@ -168,9 +130,9 @@
 
 
 
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/students.js"></script>
+    <script src="../../public/JS/student.js"></script>
     <script src="../../public/JS/search.js"></script>
 </body>
 

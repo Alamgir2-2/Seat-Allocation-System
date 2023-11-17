@@ -4,17 +4,14 @@ $(document).ready(function () {
 
     // Insert Data
     $('#submitBtn').click(function () {
-        var stu_id = $("#stuendtId").val();
-        var stu_name = $("#stuendtName").val();
-        var dept = $("#deptName").val();
+        var student_id = $("#studentId").val();
+        var name = $("#name").val();
         var session = $("#session").val();
-        var hall = $("#hallName").val();
-        var room = $("#roomNo").val();
-        var block = $("#block").val();
+        var dept_id = $("#deptId").val();
 
 
         // Check if the input field is empty
-        if (stu_id.trim() === "") {
+        if (student_id.trim() === "") {
             $("#nameError").text("Fill the input field").show();
         } else {
             $("#nameError").hide();
@@ -24,25 +21,22 @@ $(document).ready(function () {
                 url: "../../app/Admin/studentProcess.php",
                 data: {
                     insert_data: true,
-                    stu_id: stu_id,
-                    stu_name: stu_name,
-                    dept: dept,
+                    student_id: student_id,
+                    name: name,
                     session: session,
-                    hall: hall,
-                    room: room,
-                    block: block
+                    dept_id: dept_id
                 },
                 success: function (response) {
                     // alert(response);
 
                     if (response === "duplicate") {
-                        toastr.error("File with Same Name or ID already exist !!.");
+                        toastr.error("Student with Same Id already exist !!.");
                         $("#myForm")[0].reset();
                         $('#exampleModal').modal('hide');
                         // location.reload();
                     }
                     else if (response === "success") {
-                        // console.log(response);
+                        console.log(response);
 
 
                         $("#myForm")[0].reset();
@@ -57,7 +51,7 @@ $(document).ready(function () {
                     }
                 },
                 error: function () {
-                    toastr.error("Error inserting data.");
+                    toastr.error("Error inserting data2.");
                 }
             });
         }
@@ -67,14 +61,14 @@ $(document).ready(function () {
     // Delete Data 
     $(document).on("click", ".delete_btn", function () {
         if (confirm("Are you sure you want to delete this data?")) {
-            var stu_id = $(this).closest('tr').find('.stu_id').text();
+            var student_id = $(this).closest('tr').find('.student_id').text();
 
             $.ajax({
                 type: "POST",
                 url: "../../app/Admin/studentProcess.php",
                 data: {
                     delete: true,
-                    stu_id: stu_id,
+                    student_id: student_id,
 
                 },
                 success: function (response) {
@@ -99,20 +93,16 @@ function loadData() {
         url: "../../app/Admin/studentData.php",
 
         success: function (response) {
-            // console.log(response);
+            console.log(response);
             $('#tableBody').empty();
 
             $.each(response, function (key, value) {
-                // console.log(value['stu_name']);
+                console.log(response);
                 $('#tableBody').append(
                     '<tr>' +
-                    '<td class="stu_id">' + value['stu_id'] + '</td>\
-                    <td>'+ value['stu_name'] + '</td>\
-                    <td>'+ value['dept'] + '</td>\
+                    '<td class="student_id">' + value['student_id'] + '</td>\
+                    <td>'+ value['name'] + '</td>\
                     <td>'+ value['session'] + '</td>\
-                    <td>'+ value['hall'] + '</td>\
-                    <td>'+ value['room'] + '</td>\
-                    <td>'+ value['block'] + '</td>\
                     <td>\
                     <button id="delete" class="btn btn-danger btn-sm delete_btn"><i class="fa fa-trash"></i></button>\
                     <td>\
@@ -125,5 +115,4 @@ function loadData() {
         }
     });
 }
-
 {/* <button class="btn btn-primary btn-sm edit_btn"><i class="fa fa-edit"></i></button>\ */}

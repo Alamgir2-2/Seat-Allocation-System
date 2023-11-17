@@ -40,6 +40,7 @@
                                 <tr>
                                     <th scope="col" class="text-nowrap">Department Id</th>
                                     <th scope="col" class="text-nowrap">Department Name</th>
+                                    <th scope="col" class="text-nowrap">Action</th>
 
                             </thead>
                             <tbody id="tableBody">
