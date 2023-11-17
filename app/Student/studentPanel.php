@@ -67,12 +67,10 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
     <!-- Load Content -->
     <script>
         $(document).ready(function () {
-            // Load the content based on the session variable
             loadContent('<?php echo $_SESSION['currentPage']; ?>', './<?php echo $_SESSION['currentPage']; ?>.php');
         });
 
         function loadContent(page, url) {
-            // Update URL with parameters
             window.history.pushState({ page: page }, null, "?page=" + page);
 
             // Store the current page in a session variable

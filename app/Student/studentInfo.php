@@ -31,18 +31,15 @@
         function searchStudent() {
             var studentId = $("#studentId").val();
 
-            // Perform AJAX request using jQuery
+
             $.ajax({
-                url: "./studentData.php", // Replace with the actual filename of your backend script
+                url: "./studentData.php", 
                 method: "GET",
                 data: { student_id: studentId },
                 success: function (response) {
-                    // Parse the JSON response
                     var data = $.parseJSON(response);
 
-                    // Check if data is available
                     if (data.length > 0) {
-                        // Create a table dynamically
                         var table = '<table class="table table-striped border border-2">' +
                             '<thead>' +
                             '<tr>' +
@@ -55,7 +52,6 @@
                             '</thead>' +
                             '<tbody>';
 
-                        // Populate the table rows with data
                         $.each(data, function (index, row) {
                             table += '<tr>' +
                                 '<td>' + row.student_name + '</td>' +
@@ -68,7 +64,6 @@
 
                         table += '</tbody></table>';
 
-                        // Update the result container with the table
                         $("#resultContainer").html(table);
                     } else {
                         $("#resultContainer").html("No results found for student id: " + studentId);

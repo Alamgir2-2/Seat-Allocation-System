@@ -48,7 +48,6 @@
                             '</thead>' +
                             '<tbody>';
 
-                        // Populate the table rows with data
                         $.each(data, function (index, row) {
                             resultText += '<tr>' +
                                 '<td>' + row.student_name + '</td>' +
@@ -60,7 +59,6 @@
 
                         resultText += '</tbody></table>';
 
-                        // Update the result container with the table
                         $("#resultContainer").html(resultText);
                     } else {
                         $("#resultContainer").html("No students found in Room " + roomNumber);

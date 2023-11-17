@@ -25,6 +25,6 @@ function get_hall_info($conn) {
 
 $hall_info = get_hall_info($conn);
 
-// Return the data as JSON
+
 echo json_encode($hall_info);
 ?>
