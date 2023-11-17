@@ -4,15 +4,16 @@ $(document).ready(function () {
 
     // Insert Data
     $('#submitBtn').click(function () {
-        // var hall_id = $("#hallId").val();
+        var hall_id = $("#hallId").val();
         var hall_name = $("#hallName").val();
         var total_seat = $("#totalSeat").val();
-        var avil_seat = $("#avilSeat").val();
-        var num_stu = $("#numofStudent").val();
+        var available_seat = $("#availableSeat").val();
+        var total_student = $("#totalStudent").val();
+        var block_id = $("#blockId").val();
 
 
         // Check if the input field is empty
-        if (hall_name.trim() === "") {
+        if (hall_id.trim() === "") {
             $("#nameError").text("Fill the input field").show();
         } else {
             $("#nameError").hide();
@@ -22,11 +23,12 @@ $(document).ready(function () {
                 url: "../../app/Admin/hallProcess.php",
                 data: {
                     insert_data: true,
-                    // hall_id: hall_id,
+                    hall_id: hall_id,
                     hall_name: hall_name,
                     total_seat: total_seat,
-                    avil_seat: avil_seat,
-                    num_stu: num_stu,
+                    available_seat: available_seat,
+                    total_student: total_student,
+                    block_id: block_id
                 },
                 success: function (response) {
                     // alert(response);
@@ -108,8 +110,9 @@ function loadData() {
                     <td class = "fw-bold">' + serialNumber + '</td>\
                     <td>'+ value['hall_name'] + '</td>\
                     <td>'+ value['total_seat'] + '</td>\
-                    <td>'+ value['avil_seat'] + '</td>\
-                    <td>'+ value['num_stu'] + '</td>\
+                    <td>'+ value['available_seat'] + '</td>\
+                    <td>'+ value['total_student'] + '</td>\
+                    <td>'+ value['block_id'] + '</td>\
                     <td>\
                     <button id="delete" class="btn btn-danger btn-sm delete_btn"><i class="fa fa-trash"></i></button>\
                     <td>\
