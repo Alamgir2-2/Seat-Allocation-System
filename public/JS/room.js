@@ -103,7 +103,6 @@ function loadData() {
                     '<td class="room_number">' + value['room_number'] + '</td>\
                     <td>'+ value['table_count'] + '</td>\
                     <td>'+ value['bed'] + '</td>\
-                    <td>'+ value['hall_id'] + '</td>\
                     <td>\
                     <button id="delete" class="btn btn-danger btn-sm delete_btn"><i class="fa fa-trash"></i></button>\
                     <td>\
@@ -117,3 +116,4 @@ function loadData() {
     });
 }
 {/* <button class="btn btn-primary btn-sm edit_btn"><i class="fa fa-edit"></i></button>\ */}
+{/* <td>'+ value['hall_id'] + '</td>\ */}

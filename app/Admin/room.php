@@ -42,11 +42,10 @@ include('../database/dbConn.php');
 
                             <thead>
                                 <tr>
-                                    <!-- <th scope="col" class="text-nowrap">Id</th> -->
                                     <th scope="col" class="text-nowrap">Room Number</th>
                                     <th scope="col" class="text-nowrap">Number of Table</th>
                                     <th scope="col" class="text-nowrap">Number of Bed</th>
-                                    <th scope="col" class="text-nowrap">Hall Id</th>
+                                    <!-- <th scope="col" class="text-nowrap">Hall Id</th> -->
                                     <th scope="col" class="text-nowrap">Action</th>
                             </thead>
                             <tbody id="tableBody">
@@ -169,7 +168,7 @@ include('../database/dbConn.php');
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/Rooms.js"></script>
+    <script src="../../public/JS/room.js"></script>
     <script src="../../public/JS/search.js"></script>
 </body>
 
