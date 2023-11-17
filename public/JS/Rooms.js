@@ -4,14 +4,14 @@ $(document).ready(function () {
 
     // Insert Data
     $('#submitBtn').click(function () {
-        var room_num = $("#roomNumber").val();
-        var num_table = $("#numofTable").val();
+        var room_number = $("#roomNumber").val();
+        var table_count = $("#numofTable").val();
         var bed = $("#numofBed").val();
-        var floor = $("#floorNum").val();
+        var hall_id = $("#hallId").val();
 
 
         // Check if the input field is empty
-        if (room_num.trim() === "") {
+        if (room_number.trim() === "") {
             $("#nameError").text("Fill the input field").show();
         } else {
             $("#nameError").hide();
@@ -21,10 +21,10 @@ $(document).ready(function () {
                 url: "../../app/Admin/roomProcess.php",
                 data: {
                     insert_data: true,
-                    room_num: room_num,
-                    num_table: num_table,
+                    room_number: room_number,
+                    table_count: table_count,
                     bed: bed,
-                    floor: floor
+                    hall_id: hall_id
                 },
                 success: function (response) {
                     // alert(response);
@@ -61,14 +61,14 @@ $(document).ready(function () {
     // Delete Data 
     $(document).on("click", ".delete_btn", function () {
         if (confirm("Are you sure you want to delete this data?")) {
-            var room_num = $(this).closest('tr').find('.room_num').text();
+            var room_number = $(this).closest('tr').find('.room_number').text();
 
             $.ajax({
                 type: "POST",
                 url: "../../app/Admin/roomProcess.php",
                 data: {
                     delete: true,
-                    room_num: room_num,
+                    room_number: room_number,
 
                 },
                 success: function (response) {
@@ -100,10 +100,10 @@ function loadData() {
                 console.log(response);
                 $('#tableBody').append(
                     '<tr>' +
-                    '<td class="room_num">' + value['room_num'] + '</td>\
-                    <td>'+ value['num_table'] + '</td>\
+                    '<td class="room_number">' + value['room_number'] + '</td>\
+                    <td>'+ value['table_count'] + '</td>\
                     <td>'+ value['bed'] + '</td>\
-                    <td>'+ value['floor'] + '</td>\
+                    <td>'+ value['hall_id'] + '</td>\
                     <td>\
                     <button id="delete" class="btn btn-danger btn-sm delete_btn"><i class="fa fa-trash"></i></button>\
                     <td>\

@@ -1,3 +1,7 @@
+<?php
+include('../database/dbConn.php');
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +18,7 @@
 </head>
 
 <body>
-<h4 class="text-center mt-4">Rooms</h4>
+    <h4 class="text-center mt-4">Rooms</h4>
     <div class="container mt-5 d-flex justify-content-center">
         <div class="card w-100">
             <div class="card-body">
@@ -42,7 +46,7 @@
                                     <th scope="col" class="text-nowrap">Room Number</th>
                                     <th scope="col" class="text-nowrap">Number of Table</th>
                                     <th scope="col" class="text-nowrap">Number of Bed</th>
-                                    <th scope="col" class="text-nowrap">Floor Number</th>
+                                    <th scope="col" class="text-nowrap">Hall Id</th>
                                     <th scope="col" class="text-nowrap">Action</th>
                             </thead>
                             <tbody id="tableBody">
@@ -69,26 +73,41 @@
                             <form method="POST" id="myForm">
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Room Number</label>
-                                        <input type="text" name="room_num" class="form-control" id="roomNumber" required>
+                                        <label class="col-form-label">Room Number</label>
+                                        <input type="text" name="room_number" class="form-control" id="roomNumber"
+                                            required>
                                         <span id="nameError" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
                                         <label class="col-form-label">Number of Table</label>
-                                        <input type="text" name="num_table" class="form-control required numofTable"
+                                        <input type="text" name="table_count" class="form-control required numofTable"
                                             id="numofTable" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label  class="col-form-label">Number of Bed</label>
+                                        <label class="col-form-label">Number of Bed</label>
                                         <input type="text" name="bed" class="form-control" id="numofBed" required>
                                         <span id="nameError" class="text-danger"></span>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="col-form-label">Floor Number</label>
-                                        <input type="text" name="floor" class="form-control required "
-                                            id="floorNum" required>
+                                        <label class="col-form-label">Hall Id</label>
+                                        <select name="hall_id" class="form-control required" id="hallId" required>
+                                            <option value="Select Hall Id" class="form-control">Select Hall Id</option>
+                                            <?php
+                                            $sql = "SELECT * FROM `Hall`";
+
+                                            $result = $conn->query($sql);
+
+                                            if ($result->num_rows > 0) {
+                                                while ($row = $result->fetch_assoc()) {
+                                                    echo '<option>' . $row["hall_id"] . '</option>';
+                                                }
+                                            } else {
+                                                echo '<option>No Hall found</option>';
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -102,7 +121,7 @@
                     </div>
                 </div>
                 <!-- Edit Modal -->
-                <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -123,7 +142,7 @@
                                             required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="fileId" class="col-form-label">File Id</label> 
+                                        <label for="fileId" class="col-form-label">File Id</label>
                                         <input type="hidden" class="form-control" id="file_id" required>
                                     </div>
                                 </div>
@@ -132,12 +151,12 @@
                                         data-bs-dismiss="modal">Close</button>
                                     <button type="button" name="update" id="updateBtn"
                                         class="btn btn-success btn-sm">Update</button>
-                                </div> 
+                                </div>
                             </form>
 
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -148,9 +167,9 @@
 
 
 
-   
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../public/JS/room.js"></script>
+    <script src="../../public/JS/Rooms.js"></script>
     <script src="../../public/JS/search.js"></script>
 </body>
 

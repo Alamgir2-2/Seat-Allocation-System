@@ -34,7 +34,6 @@ if (isset($_POST['insert_data'])) {
       }
     }
   } else {
-    // Block ID does not exist, provide an error message
     echo $return = 'error_block_not_found';
   }
 }

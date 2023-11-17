@@ -4,7 +4,7 @@
 include('../database/dbConn.php');
 
 // Fetch data from the "exam" table
-$query = "SELECT * FROM `rooms`";
+$query = "SELECT * FROM `Room`";
 $result = mysqli_query($conn, $query);
 
 // Prepare an array to store the dataa
@@ -17,7 +17,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 // Close the database connection
 mysqli_close($conn);
-
+ 
 // Return the data as JSON
 header('Content-Type: application/json');
 echo json_encode($data);
