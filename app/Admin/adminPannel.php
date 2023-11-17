@@ -50,6 +50,11 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
                                 <i class="fas fa-users"></i> Students
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="loadContent('department','./department.php')">
+                                <i class="fas fa-users"></i> Departments
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('hall', './hall.php')">

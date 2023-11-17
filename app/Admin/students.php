@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <!-- Edit Modal -->
-                <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="editData" tabindex="-1" aria-labelledby="editDataLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -157,7 +157,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
