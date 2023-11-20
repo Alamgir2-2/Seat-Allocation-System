@@ -28,7 +28,7 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                                <img src="" alt="">
+                            <img src="" alt="">
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('studentInfo', './studentInfo.php')">
@@ -67,14 +67,13 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
     <!-- Load Content -->
     <script>
         $(document).ready(function () {
-            loadContent('<?php echo $_SESSION['currentPage']; ?>', './<?php echo $_SESSION['currentPage']; ?>.php');
+            const currentPage = localStorage.getItem('currentPage');
+            loadContent(currentPage || '<?php echo $_SESSION['currentPage']; ?>', './<?php echo $_SESSION['currentPage']; ?>.php');
         });
 
         function loadContent(page, url) {
             window.history.pushState({ page: page }, null, "?page=" + page);
-
-            // Store the current page in a session variable
-            <?php $_SESSION['currentPage'] = "' + page + '"; ?>
+            localStorage.setItem('currentPage', page);
 
             $.ajax({
                 url: url,
@@ -97,6 +96,7 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
             }
         });
     </script>
+
 </body>
 
 </html>
