@@ -46,11 +46,11 @@ $_SESSION['currentPage'] = isset($_SESSION['currentPage']) ? $_SESSION['currentP
                                 <i class="fas fa-boxes"></i> Room Info
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="#" onclick="loadContent('apply', './apply.php')">
                                 <i class="fas fa-align-left"></i> Apply
                             </a>
-                        </li> -->
+                        </li>
                     </ul>
                 </div>
             </nav>
