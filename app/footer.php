@@ -4,6 +4,6 @@
 
 </head>
 <body>
-    <h6 class="my-5 text-center">All Rights reserved @Mostaq</h5>
+    <h6 class="my-5 text-center">All Rights Reserved @Alamgir</h5>
 </body>
 </html>
